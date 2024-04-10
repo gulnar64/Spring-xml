@@ -1,18 +1,22 @@
 package aze.coders.entity;
 
-import java.util.List;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+@Component
 public class Currency {
     private int id;
     private String code;
     private  String name;
-    private List<Rate> rates;
+    private Map<String,Rate> rates;
 
-    public List<Rate> getRates() {
+    public Map<String,Rate> getRates() {
         return rates;
     }
 
-    public void setRates(List<Rate> rates) {
+    public void setRates(Map<String,Rate> rates) {
         this.rates = rates;
     }
 
@@ -44,6 +48,9 @@ public class Currency {
         System.out.println("id&code constructor");
         this.id = id;
         this.code = code;
+    }
+
+    public Currency() {
     }
 
     public Currency(String code, String name) {
