@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--    <bean id="account" class="aze.coders.entity.Account">-->
+    <!--        <property name="user" ref="employer"/>-->
+    <!--    </bean>-->
+    <bean id="account" class="aze.coders.entity.Account " init-method="startMethod" destroy-method="finishMethod">
+        <!--        <property name="user" ref="customer"/>-->
+        <constructor-arg ref="customer"/>
+        <property name="account" value="AZE1763134"/>
+        <property name="currency" ref="currency"/>
+
+    </bean>
+    <bean id="customer" class="aze.coders.entity.Customer"/>
+    <bean id="currency" class="aze.coders.entity.Currency">
+        <constructor-arg value="15" type="int"/>
+        <constructor-arg value="AZN"/>
+        <property name="name" value="Azerbaycan manati"/>
+        <property name="rates">
+            <list>
+                <ref bean="rate07042024"/>
+                <bean id="rate06042024" class="aze.coders.entity.Rate">
+                    <constructor-arg value="06.04.2024"/>
+                    <property name="rate" value="1.7"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+    <bean id="employer" class="aze.coders.entity.Employer"/>
+    <bean id="rate07042024" class="aze.coders.entity.Rate">
+        <constructor-arg value="07.04.2024"/>
+        <property name="rate" value="1.7025"/>
+    </bean>
+</beans>
